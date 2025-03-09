@@ -1,41 +1,47 @@
 package Sorting;
 
-import java.util.Arrays;
-
 public class MergeSort {
-    public static void main(String[] args) {
-        int arr1[] = {1,2,3,4,5};
-        int arr2[] = {6,7,8,9,10};
-        int[] result = merge(arr1, arr2);
-        System.out.println(Arrays.toString(result));
-    }
-    public static int[] merge(int arr1[], int arr2[]){
-        int i = 0;
-        int j = 0;
-        int k = 0;
-        int res[] = new int[arr1.length + arr2.length];
-        while(i<arr1.length && j<arr2.length){
-            if(arr1[i] < arr2[j]){
-                res[k] = arr1[i];
-                i++; k++;
+
+    public static void conquer(int arr[], int si, int mid, int ei) {
+        int merge[] = new int[ei-si + 1];
+        int index1 = si;
+        int index2 = mid + 1;
+        int x = 0;
+        while(index1 <= mid && index2 <= ei){
+            if(arr[index1] <= arr[index2]){
+                merge[x++] = arr[index1++];
             }
             else{
-                res[k] = arr2[j];
-                k++;
-                j++;
+                merge[x++] = arr[index2++];
             }
         }
+        while (index1 <= mid) {
+            merge[x++] = arr[index1++];
+        }
+        while(index2 <= ei){
+            merge[x++] = arr[index2++];
+        }
+        for(int i = 0, j = si; i<merge.length; i++, j++){
+            arr[j]=merge[i];
+        }
+    }
 
-        while(i < arr1.length){
-            res[k] = arr1[i];
-            k++;
-            i++;
+    public static void divide(int arr[], int si, int ei) {
+        if(si>= ei){
+            return;
         }
-        while(j < arr2.length){
-            res[k] = arr2[j];
-            k++;
-            j++;
+        int mid = si + (ei - si)/2;
+        divide(arr, si, mid);
+        divide(arr, mid+1, ei);
+    }
+    
+    public static void main(String[] args) {
+        int arr[] = {6,7,12,9,21,0,1,5};
+        int n = arr.length; 
+        divide(arr, 0, n-1);
+        for(int i =0; i<n; i++){
+            System.out.print(arr[i] + " ");
         }
-        return res;
+        System.out.println();
     }
 }
