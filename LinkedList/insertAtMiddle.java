@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class Node {
     int data;
-    Noden next;
+    Node next;
 
     Node(int data) {
         this.data = data;
@@ -16,7 +16,7 @@ public class insertAtMiddle{
         System.out.println("Enter the value for the node");
         Scanner scanner = new Scanner(System.in);
         int data = scanner.nextInt();
-        Noden head = new Noden(data);
+        Node head = new Node(data);
         addNodeAfter(head);
         addNodeAfter(head);
         addNodeAfter(head);
@@ -24,30 +24,30 @@ public class insertAtMiddle{
         printList(head);
     }
 
-    private static void addNodeAfter(Noden head) {
+    private static void addNodeAfter(Node head) {
         Scanner sc = new Scanner(System.in);
-        Noden temp = head;
+        Node temp = head;
         while (temp.next != null) {
             temp = temp.next;
         }
         System.out.println("Enter the value for the node");
         int data = sc.nextInt();
-        Noden newNode = new Noden(data);
+        Node newNode = new Node(data);
         temp.next = newNode;
     }
 
-    private static Noden addNodeBefore(Noden head) {
+    private static Node addNodeBefore(Node head) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the value for the node");
         int data = sc.nextInt();
-        Noden newNode = new Noden(data);
+        Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
         return head;
     }
 
-    private static void printList(Noden head) {
-        Noden temp = head;
+    private static void printList(Node head) {
+        Node temp = head;
         while (temp != null) {
             System.out.print(temp.data + "-->");
             temp = temp.next;
@@ -55,12 +55,12 @@ public class insertAtMiddle{
         System.out.print("Null");
     }
 
-    private static void deleteLastNode(Noden node) {
+    private static void deleteLastNode(Node node) {
         node = null;
     }
 
-    private static Noden findNode(Noden node, int data) {
-        Noden curr = node;
+    private static Node findNode(Node node, int data) {
+        Node curr = node;
         while (curr != null) {
             if (curr.data == data) {
                 return curr;
@@ -70,15 +70,15 @@ public class insertAtMiddle{
         return null;
     }
 
-    private static Noden insertInMiddle(Noden head, int data) {
+    private static Node insertInMiddle(Node head, int data) {
         Scanner sc = new Scanner(System.in);
-        Noden temp = head;
+        Node temp = head;
         while (temp.data == data){
             temp = temp.next;
         }
         System.out.println("Enter the value at middle");
         int value = sc.nextInt();
-        Noden newNode = new Noden(value);
+        Node newNode = new Node(value);
         newNode.next = temp.next;
         temp.next = newNode;
         sc.close();
