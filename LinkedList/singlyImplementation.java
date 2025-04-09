@@ -145,37 +145,147 @@ public class singlyImplementation {
     }
 
     public void reverse(){
-        Node prev  = null;
-        Node curr = tail =  head;
+        Node prev = null;
+        Node curr = tail = head;
         Node next;
-        while(curr != null){
-            next =  curr.next;
+        while (curr!=null) {
+            next = curr.next;
             curr.next = prev;
             prev = curr;
-            curr = next; 
+            curr = next;
         }
-        head = prev;
     }
+
+    public void deleteNthFromNode(int n){
+        int sz = 0;
+        Node temp = head;
+        while(temp!=null){
+            temp = temp.next;
+            sz++;
+        }
+        if(n == sz){
+            head = head.next;
+            return;
+        }
+        int i = 1;
+        int iToFind = sz - n;
+        Node prev = head;
+        while (i < iToFind) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast =fast.next.next;
+        }
+        return slow;
+    }
+
+    public boolean palindrome(){
+        if(head == null || head.next == null){
+            return true;
+        }
+        //Find Mid
+        Node midNode =  findMid(head);
+
+        //Reverse 2nd Half 
+        Node prev = null;
+        Node curr =  midNode;
+        Node next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev;
+        Node left = head;
+
+        // check left half & right half
+        while (right != null) {
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+
+        return true ;
+    }
+
+
+     public boolean  isCycle(){
+        Node slowNode = head;
+        Node fastNode = head;
+        while(fastNode!= null && fastNode.next !=null){
+            slowNode = slowNode.next;
+            fastNode = fastNode.next.next;
+            if(slowNode == fastNode){
+                return true;
+            }
+        }
+        return false;
+     }
+
+     public static void removeCycle(){
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        while(fast != null && fast.next!=null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                cycle = true;
+                break;
+            }
+        }
+        if(cycle == false){
+            return;
+        }
+
+        slow = head;
+        Node prev = null;
+        while (slow!=fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;
+     }
 
     public static void main(String[] args) {
         singlyImplementation n = new singlyImplementation();
-        n.addFirst(10);
-        n.addFirst(20);
-        n.addFirst(30);
-        n.addFirst(40);
-        n.addLast(100);
-        n.addInMiddle(50, 0);
+        // n.addFirst(10);
+        // n.addFirst(20);
+        // n.addFirst(30);
+        // n.addFirst(40);
+        // n.addLast(100);
+        // n.addInMiddle(50, 0);
         // n.print();
-        // n.size();
-        // // System.out.println(n.removeFirst());
-        // n.print();System.out.println();
-        // n.removeLast();
-        
-        n.print();
-        // n.search(10);
-        // System.out.println(n.rec(40));
-        System.out.println();
-        n.reverse();
-        n.print();
+        // System.out.println();
+        // n.deleteNthFromNode(5);
+        // n.addFirst(1);
+        // n.addLast(2);
+        // n.addLast(1);
+        // n.print();
+        head = new Node (1);
+        Node temp = new Node(2);
+        head. next = temp ;
+        head. next.next = new Node (3);
+        head. next. next.next = temp;
+        // System.out.println(n.palindrome());
+        System.out.println(n.isCycle());
+        n.removeCycle();
+        System.out.println(n.isCycle());
+
     }
 }
