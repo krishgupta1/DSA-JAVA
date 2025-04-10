@@ -262,8 +262,94 @@ public class singlyImplementation {
         prev.next = null;
      }
 
+     private Node getMid(Node head){
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null &&fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+     }
+     private Node merge(Node head1, Node head2){
+        Node mergeLL = new Node(-1);
+        Node temp = mergeLL;
+
+        while(head1 != null && head2 != null){
+            if(head1.data <= head2.data){
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
+            }
+            else{
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
+            }
+        }
+        while(head1 != null){
+            temp.next = head1;
+            head1 = head1.next;
+            temp = temp.next;
+        }
+        return mergeLL.next;
+     }
+    public Node mergeSort(Node head){
+
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node mid = getMid(head);
+        Node rightHead = mid.next;
+        mid.next = null;
+        Node newLeft = mergeSort(head);
+        Node newRight = mergeSort(rightHead);
+
+        return merge(newLeft, newRight);
+    } 
+
+    public void ZigZag(){
+        Node slow = head;
+        Node fast = head.next;
+        while(fast != null && fast.next  != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+        
+        //Reverse 2nd Half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+
+        while(curr != null){
+            next = curr.next;
+            curr.next  = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node left = head;
+        Node right = prev;
+        Node nextL, nextR;
+
+        //alt Merge - Zig-Zag Merge
+        while(left != null && right != null){
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next= nextL;
+
+            left = nextL;
+            right = nextR;
+        }
+
+    }
+
     public static void main(String[] args) {
         singlyImplementation n = new singlyImplementation();
+        singlyImplementation ll = new singlyImplementation();
         // n.addFirst(10);
         // n.addFirst(20);
         // n.addFirst(30);
@@ -277,15 +363,27 @@ public class singlyImplementation {
         // n.addLast(2);
         // n.addLast(1);
         // n.print();
-        head = new Node (1);
-        Node temp = new Node(2);
-        head. next = temp ;
-        head. next.next = new Node (3);
-        head. next. next.next = temp;
+        // head = new Node (1);
+        // Node temp = new Node(2);
+        // head. next = temp ;
+        // head. next.next = new Node (3);
+        // head. next. next.next = temp;
         // System.out.println(n.palindrome());
-        System.out.println(n.isCycle());
-        n.removeCycle();
-        System.out.println(n.isCycle());
+        // System.out.println(n.isCycle());
+        // n.removeCycle();
+        // System.out.println(n.isCycle());
+        System.out.println();
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
+        ll.print();
+        // ll.head = ll.mergeSort(ll.head);
+        System.out.println();
+        // ll.print();
 
+        ll.ZigZag();
+        ll.print();
     }
 }
