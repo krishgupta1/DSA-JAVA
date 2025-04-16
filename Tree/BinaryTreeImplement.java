@@ -1,5 +1,5 @@
 package Tree;
-    
+
 public class BinaryTreeImplement {
     static class Node{
         int data;
@@ -29,6 +29,7 @@ public class BinaryTreeImplement {
         root.rightNode.rightNode = new Node(62);
         root.leftNode.rightNode.leftNode = new Node(11);
     }
+
 
     void print(Node root){
         if(root == null){
