@@ -1,9 +1,6 @@
 package Tree;
-
 import java.util.LinkedList;
 import java.util.Queue;
-
-import Recursion.linearSearch;
 
 public class binaryTree {
     public static void main(String[] args) {
