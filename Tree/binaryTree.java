@@ -112,7 +112,6 @@ public class binaryTree {
             if(root == null){
                 return 0;
             }
-    
             int lh = height(root.left);
             int rh = height(root.right);
     
@@ -120,7 +119,6 @@ public class binaryTree {
         }
 
         // Count of Nodes
-
         public static int countNode(Node root){
             if(root == null){
                 return 0;
@@ -128,7 +126,6 @@ public class binaryTree {
             int Lcount = countNode(root.left);
             int Rcount = countNode(root.right);
             return Lcount + Rcount + 1;
-
         }
 
         // Sum of Nodes
@@ -142,6 +139,4 @@ public class binaryTree {
             return leftSum + rightSum + root.data;
         }
     }
-
-    
 }
