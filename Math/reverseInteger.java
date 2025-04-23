@@ -2,19 +2,25 @@ package Math;
 
 public class reverseInteger {
     public static void main(String[] args) {
-        int x = 123;
-        int reversed = 0;
-        while(x!=0){
-            int digit = x%10;
-            x/=10;
-            if (reversed > Integer.MAX_VALUE / 10 || (reversed == Integer.MAX_VALUE / 10 && digit > 7)) {
-                System.out.println("0");
+        int x = 1534236469;
+        String s = String.valueOf(x);
+        StringBuilder s1Builder = new StringBuilder();
+
+        for(int i = s.length()-1; i >= 0; i--){
+            if(s.charAt(i) == '-'){
+                s1Builder.insert(0, s.charAt(i));
             }
-            if (reversed < Integer.MIN_VALUE / 10 || (reversed == Integer.MIN_VALUE / 10 && digit <  -8)) {
-                System.out.println("0");
+            else{
+            s1Builder.append(s.charAt(i));
             }
-            reversed = reversed * 10 + digit;
         }
-        System.out.println(reversed);
+        String newS = s1Builder.toString();
+        int reverse = Integer.parseInt(newS);
+        try {
+            System.out.println(reverse);
+        }
+        catch (NumberFormatException e) {
+            System.out.println(0);
+        }
     }
 }
