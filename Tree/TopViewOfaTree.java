@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import Tree.BinaryTreeImplement.Node;
-
 public class TopViewOfaTree {
     public static void main(String[] args) {
         Node root = new Node(1);
