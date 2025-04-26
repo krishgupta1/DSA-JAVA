@@ -6,20 +6,20 @@ public class binaryTree {
     public static void main(String[] args) {
         int nodes[] = {1,2,4,-1,-1,5,-1,-1,3,-1,6,-1,-1};
         BinaryTree tree = new BinaryTree();
-        Node root = tree.buildTree(nodes);
+        Node root = BinaryTree.buildTree(nodes);
         System.out.println(root.data);
-        tree.preOrder(root);
+        BinaryTree.preOrder(root);
         System.out.println();
-        tree.inOrder(root);
+        BinaryTree.inOrder(root);
         System.out.println();
-        tree.postOrder(root);
+        BinaryTree.postOrder(root);
         System.out.println();
-        tree.levelOrder(root);
+        BinaryTree.levelOrder(root);
         System.out.println();
-        System.out.println(tree.height(root));
+        System.out.println(BinaryTree.height(root));
         // System.out.println(tree.idx);
-        System.out.println(tree.countNode(root));
-        System.out.println(tree.sumOfNodes(root));
+        System.out.println(BinaryTree.countNode(root));
+        System.out.println(BinaryTree.sumOfNodes(root));
     }
 
     static class Node{

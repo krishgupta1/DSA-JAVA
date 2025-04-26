@@ -1,20 +1,19 @@
 package Graph;
-import java.util.*;
 
-public class createGraph {
-     static class Edge {
-        int src;
-        int dest;
-        int wt;
+import java.util.ArrayList;
 
-        public Edge(int src, int dest, int wt) {
-            this.src = src;
-            this.dest = dest;
-            this.wt = wt;
-        }
+public class HasPath {
+
+    static class Edge {
+    int src;
+    int dest;
+    int wt;
+    public Edge(int src, int dest, int wt) {
+        this.src = src;
+        this.dest = dest;
+        this.wt = wt;
     }
-
-    // Method to create the graph
+}
     public static void createGraph(ArrayList<Edge>[] graph) {
         for (int i = 0; i < graph.length; i++) {
             graph[i] = new ArrayList<>();
@@ -56,44 +55,24 @@ public class createGraph {
         // 6 - Vertex
         graph[6].add(new Edge(6, 5, 1));
     }
-
-    public static void bfs(ArrayList<Edge> [] graph){
-        Queue<Integer> q = new LinkedList<>();
-        boolean visited[] = new boolean[graph.length];
-        q.add(0);
-
-        while(!q.isEmpty()){
-            int current = q.remove();
-
-            if(!visited[current]){
-                System.out.print(current + "->");
-                visited[current] = true;
-                for(int i = 0; i<graph[current].size(); i++){
-                    Edge e = graph[current].get(i);
-                    q.add(e.dest);
-                }
+    public static boolean hasPath(ArrayList<Edge>[] graph,  int src, int dest, boolean visited[]){
+        if(src ==dest){
+            return true;
+        }
+        visited[src]= true;
+        for(int i = 0; i<graph[src].size(); i++){
+            Edge e = graph[src].get(i);
+            // e.dest = neighbour
+            if(!visited[e.dest] && hasPath(graph, e.dest, dest, visited)){
+                return true;
             }
         }
+        return false;
     }
-
-    public static void dfs(ArrayList<Edge>[] graph, int current, boolean visited[]){
-        //Visit
-        System.out.print(current + " ");
-        visited[current] = true;
-
-        for (int i = 0; i < graph[current].size(); i++) {
-            Edge e = graph[current].get(i);
-            if(!visited[e.dest]){
-                dfs(graph, e.dest, visited);
-            }
-        }
-    }
-
     public static void main(String[] args) {
         int v = 7;
         ArrayList<Edge>[] graph = new ArrayList[v];
         createGraph(graph);
-        // bfs(graph);
-        dfs(graph, 0, new boolean[v]);
+        System.out.println(hasPath(graph, 0, 5, new boolean[v]));
     }
 }
