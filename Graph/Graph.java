@@ -139,6 +139,39 @@ public class Graph {
             System.out.println();
         }
     }
+
+    public void findDegreeInUndirectedGraph(int edges[][], int nodes){
+        int degree[] = new int[nodes];
+        for(int edge[] : edges){
+            int u = edge[0];
+            int v = edge[1];
+            degree[u]++;
+            degree[v]++;
+        }
+
+        //print
+        for(int i = 0; i<nodes; i++){
+            System.out.println("node -> " + i + " degree -> " + degree[i]);
+        }
+    }
+    public void findDegreeInDirectedGraph(int edges[][], int nodes){
+        int inDegree[] = new int[nodes];
+        int outDegree[] = new int [nodes];
+
+        for(int edge[] : edges){
+            int from = edge[0];
+            int to = edge[1];
+            inDegree[to]++;
+            outDegree[from]++;
+        }
+
+        //print
+        for(int i = 0; i<nodes; i++){
+            System.out.print("node -> " + i + " in-Degree -> " + inDegree[i] + " ");
+            System.out.print("node -> " + i + " out-Degree -> " + outDegree[i] + " ");
+            System.out.println();
+        }
+    }
      
     public static void main(String[] args) {
         // int edges[][] = {{0,2}, {0,1}, {1,3}};
@@ -187,5 +220,9 @@ public class Graph {
         Graph graph = new Graph(nodes);
         graph.addEdgesWithWeightInList(edges, false);
         graph.printListWeight();
+        System.out.println("Undirected Graph");
+        graph.findDegreeInUndirectedGraph(edges, nodes);
+        System.out.println("Directed Graph");
+        graph.findDegreeInDirectedGraph(edges, nodes);
     }   
 }
