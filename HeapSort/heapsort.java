@@ -20,7 +20,7 @@ public class heapsort {
     }
 
 
-      public static void main(String[] args) {
+    public static void main(String[] args) {
         PriorityQueue<Student> pq = new PriorityQueue<>();
         pq.add(new Student("A", 4));
         pq.add(new Student("B", 5));
@@ -32,5 +32,5 @@ public class heapsort {
             System.out.println(pq.peek().name + "->" + pq.peek().rank);
             pq.remove();
         }
-      }
+    }
 }
