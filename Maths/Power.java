@@ -11,4 +11,4 @@ public class Power {
         System.out.println(res);
     }
 }
-  
+         
