@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class SubString {
     public static void main(String[] args) {
         String s = "123";
-        System.out.println(getSSQ(s).toString());
+        // System.out.println(getSSQ(s).toString());
         printSSQ(s, "");
     }
     static ArrayList<String> getSSQ(String s){
