@@ -1,10 +1,9 @@
 package Stack;
-import java.util.Arrays;
-import java.util.Stack;
+import java.util.*;
 
-public class NextGreaterElementII {
+public class NextSmallerElement {
     public static void main(String[] args) {
-        int []nums = {1,2,1};
+        int []nums = {3,9,4,0,2};
         int []res = new int[nums.length];
         Stack <Integer> stack = new Stack<>();
         for(int i = 0; i<nums.length; i++){
@@ -18,7 +17,7 @@ public class NextGreaterElementII {
                     break;
                 }
                 int idx = stack.peek();
-                if(nums[i] > nums[idx]){
+                if(nums[i] < nums[idx]){
                     res[idx] = nums[i];
                     stack.pop();
                 }
@@ -28,23 +27,7 @@ public class NextGreaterElementII {
                 }
             }
         }
-        for (int i = 0; i<nums.length; i++) {
-            while (true) {
-                if(stack.isEmpty()){
-                    stack.add(i);
-                    break;
-                }
-                int idx = stack.peek();
-                if(nums[i] > nums[idx]){
-                    res[idx] = nums[i];
-                    stack.pop();
-                }
-                else{
-                    stack.push(i);
-                    break;
-                }
-            }
-        }
+        
         System.out.println(Arrays.toString(res));
     }
 }
