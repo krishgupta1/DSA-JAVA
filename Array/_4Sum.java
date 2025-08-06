@@ -6,26 +6,32 @@ public class _4Sum {
     public static void main(String[] args) {
         int nums[] = { 1, 0, -1, 0, -2, 2 };
         int target = 0;
-        List<List<Integer>> res = new ArrayList<>();
+        HashSet<List<Integer>> set = new HashSet<>();
 
         for (int a = 0; a < nums.length; a++) {
             for (int b = a+1; b < nums.length; b++) {
-                for (int c = b+1; c < nums.length; c++) {
-                    for (int d = c+1; d < nums.length; d++) {
-                        if(nums[a] + nums[b] + nums[c] + nums[d] == target){
-                            List<Integer> addVal = new ArrayList<>();
-                            addVal.add(nums[a]);
-                            addVal.add(nums[b]);
-                            addVal.add(nums[c]);
-                            addVal.add(nums[d]);
-                            Collections.sort(addVal);
-                            if(!res.contains(addVal))
-                                res.add(addVal);
-                        }
+                int c = b + 1,
+                    d = c + 1;
+                while(c < d){
+                    long sum = nums[a] + nums[b] + nums[c]+ nums[d];
+                    if(sum == 0){
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[a]);
+                        list.add(nums[b]);
+                        list.add(nums[c]);
+                        list.add(nums[d]);
+                        set.add(list);
+                        c++;
+                        d--;
+                    }
+                    else if(sum < 0){
+                        c ++;
+                    }
+                    else if(sum > 0){
+                        d --;
                     }
                 }
             }
         }
-        System.out.println(res);
     }
 }
