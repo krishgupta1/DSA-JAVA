@@ -8,30 +8,23 @@ public class _4Sum {
         int target = 0;
         HashSet<List<Integer>> set = new HashSet<>();
 
-        for (int a = 0; a < nums.length; a++) {
-            for (int b = a+1; b < nums.length; b++) {
-                int c = b + 1,
-                    d = c + 1;
-                while(c < d){
-                    long sum = nums[a] + nums[b] + nums[c]+ nums[d];
-                    if(sum == 0){
-                        List<Integer> list = new ArrayList<>();
-                        list.add(nums[a]);
-                        list.add(nums[b]);
-                        list.add(nums[c]);
-                        list.add(nums[d]);
-                        set.add(list);
-                        c++;
-                        d--;
-                    }
-                    else if(sum < 0){
-                        c ++;
-                    }
-                    else if(sum > 0){
-                        d --;
-                    }
+        for (int a = 0; a < nums.length-3; a++) {
+            for (int b = a + a; b < nums.length-2; b++) {
+                int c = b + 1;
+                int d = nums.length - 1;
+                long sum = (long) nums[a] + (long) nums[b] + (long) nums[c] + (long) nums[d];
+                if (sum == target) {
+                    set.add(Arrays.asList(nums[a], nums[b], nums[c], nums[d]));
+                    c++;
+                    d--;
+                }
+                if (sum < target) {
+                    c++;
+                } else if (sum > target) {
+                    d--;
                 }
             }
         }
+        System.out.println(set);
     }
 }
