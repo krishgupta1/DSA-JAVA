@@ -1,5 +1,4 @@
 package String;
-import java.util.Arrays;
 
 public class DuplicateCountInString {
     public static void main(String[] args) {

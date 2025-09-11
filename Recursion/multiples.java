@@ -1,5 +1,4 @@
 package Recursion;
-import java.util.Scanner;
 
 public class multiples {
     public static void main(String[] args) {

@@ -1,7 +1,5 @@
 package Array;
 
-import java.util.Arrays;
-
 public class Convert1Dto2D {
     public static void main(String[] args) {
         int[] original = {1,2};

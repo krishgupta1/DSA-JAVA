@@ -1,10 +1,6 @@
 package Array;
-
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Set;
-
-import Hashing.HashsetDemo;
 
 public class MakeArrayZerobySubtractingEqualAmounts{
     public static void main(String[] args) {

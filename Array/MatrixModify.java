@@ -1,7 +1,5 @@
 package Array;
 
-import java.util.Arrays;
-
 public class MatrixModify {
     public static void main(String[] args) {
         int[][] matrix = {{1,2,-1},{4,-1,6},{7,8,9}};

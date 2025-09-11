@@ -1,33 +1,25 @@
 package Stack;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class MyCustomStack {
-    int[] customStack;
-    int tos;
-    int size;
+    List<Integer> list;
 
-    MyCustomStack(int size) {
-        this.size = size;
-        this.customStack = new int[size];
-        this.tos = -1;
-    }
-
-    public void pop() {
-        if (isEmpty()) {
-            System.out.println("Stack is Empty");
-            return;
-        }
-        System.out.println("Value removed " + customStack[this.tos]);
-        tos--;
+    MyCustomStack() {
+        list = new ArrayList<>();
     }
 
     public void push(int data) {
-        if (isFull()) {
-            System.out.println("Stack is Full");
+        list.add(data);
+    }
+
+    public void pop() {
+        if (list.isEmpty()) {
+            System.out.println("Stack is Empty");
             return;
         }
-        tos = tos + 1;
-        customStack[tos] = data;
-        System.out.println("Data is Inserted " + data);
+        System.out.println("Value removed " + list.remove(list.size() - 1));
     }
 
     public void show() {
@@ -35,32 +27,29 @@ class MyCustomStack {
             System.out.println("Stack is Empty");
             return;
         }
-        for (int i = tos; i >= 0; i--) {
-            System.out.println(customStack[i]);
+        for (int i = list.size()-1; i >= 0; i--) {
+            System.out.println(list.get(i));
         }
     }
-    public void peek(){
-        if(isEmpty()){
+
+    public void peek() {
+        if (list.isEmpty()) {
             System.out.println("Stack is empty!");
             return;
         }
-        System.out.println(customStack[tos]);
+        System.out.println(list.get(list.size() - 1));
 
     }
 
     public boolean isEmpty() {
-        return tos == -1;
-    }
-
-    public boolean isFull() {
-        return tos == customStack.length - 1;
+        return list.size() == 0;
     }
 
 }
 
 public class implement {
     public static void main(String[] args) {
-        MyCustomStack stack = new MyCustomStack(6);
+        MyCustomStack stack = new MyCustomStack();
         stack.push(1);
         stack.push(2);
         stack.push(3);
@@ -68,5 +57,7 @@ public class implement {
         stack.show();
         stack.pop();
         stack.peek();
+        stack.show();
+
     }
 }

@@ -1,8 +1,5 @@
 package Tree;
-
 import java.util.ArrayList;
-
-import Math.reverseInteger;
 
 public class LowestCommonAncestor {
     public static void main(String[] args) {
@@ -84,26 +81,26 @@ public class LowestCommonAncestor {
         return false;
     } 
 
-    private static int lcaDist(Node root, int n) {
-        if(root == null){
-            return -1;
-        }
-        if(root.data == n){
-            return 0;
-        }
+    // private static int lcaDist(Node root, int n) {
+    //     if(root == null){
+    //         return -1;
+    //     }
+    //     if(root.data == n){
+    //         return 0;
+    //     }
 
-        int leftD = lcaDist(root.left, n);
-        int rightD = lcaDist(root.right, n);
+    //     int leftD = lcaDist(root.left, n);
+    //     int rightD = lcaDist(root.right, n);
 
-        if(leftD == -1 && rightD == -1){
-            return -1;
-        }
-        else if(leftD == -1){
-            return rightD + 1;
-        }
-        else{
-            return leftD + 1;
-        }
+    //     if(leftD == -1 && rightD == -1){
+    //         return -1;
+    //     }
+    //     else if(leftD == -1){
+    //         return rightD + 1;
+    //     }
+    //     else{
+    //         return leftD + 1;
+    //     }
 
-    }
+    // }
 }

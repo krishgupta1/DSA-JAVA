@@ -1,8 +1,6 @@
 package String;   
 import java.util.*;
 
-import Array.first;
-
 public class FindUniqueCharacter {
     public static void main(String[] args) {
         String string = "leetcode";

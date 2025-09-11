@@ -1,7 +1,6 @@
 package Hashing;
 
 import java.util.HashMap;
-import java.util.Set;
 
 public class PS01 {
     public static void main(String[] args) {

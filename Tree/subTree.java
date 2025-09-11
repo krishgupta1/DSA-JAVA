@@ -1,8 +1,5 @@
 package Tree;
 
-import Math.reverseInteger;
-import Recursion.sumOfSubsets;
-
 public class subTree {
     public static void main(String[] args) {
         Node root = new Node (1) ;

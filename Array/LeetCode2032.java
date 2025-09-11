@@ -1,8 +1,6 @@
 package Array;
-
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 public class LeetCode2032 {
     public static void main(String[] args) {

@@ -1,7 +1,5 @@
 package String;
 
-import java.util.Arrays;
-
 public class TracunateStringLeetcode {
     public static void main(String[] args) {
         String s = "Hello how are you Contestant";

@@ -1,7 +1,5 @@
 package String;
 
-import java.util.Arrays;
-
 public class NumberOfSegment {
     public static void main(String[] args) {
        int arr[] = {32,21,15,42,1,6,90,92};
