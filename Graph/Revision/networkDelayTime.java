@@ -14,7 +14,7 @@ public class networkDelayTime {
             this.time = time;
         }
     }
-    public int networkDelayTimeMain(int[][] times, int n, int k) {
+    public int networkDelayTimeMain(int[][] times, int n, int k) { 
         List<List<Pair>> adj = new ArrayList<>();
 
         for (int i = 0; i <= n; i = i + 1) {
